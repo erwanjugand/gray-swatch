@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+  <title>Générateur de gris 1.1</title>
+</head>
+<body class="container">
+  <form class="row">
+    <div class="col">
+      <label for="input-color" class="form-label">Couleur primaire</label>
+      <input type="color" class="form-control" value="#44c0ff" id="input-color">
+    </div>
+    <div class="col">
+      <label for="input-range" class="form-label">Accentuation de la teinte</label>
+      <div class="d-flex align-item-center gap-2">
+        <div id="input-range-value">10</div>
+        <input type="range" class="form-range" min="0" max="100" value="10" id="input-range">
+      </div>
+    </div>
+    <div class="col">
+      <label for="input-switch" class="form-label">Couleur complémentaire ?</label>
+      <div class="form-check form-switch">
+        <input class="form-check-input" type="checkbox" checked role="switch" id="input-switch">
+      </div>
+    </div>
+    <div class="col">
+      <label for="input-number" class="form-label">Exposant</label>
+      <div class="d-flex align-item-center gap-2">
+        <div id="input-number-value">3</div>
+        <input type="range" class="form-range" value="3" min="1" max="10" id="input-number">
+      </div>
+    </div>
+  </form>
+
+  <div class="row mt-5 color-grid" style="--color-h:0deg; --color-s:0%;">
+    <div class="col color-item" data-name="#ffffff" style="--color-l:100%;"></div>
+    <div class="col color-item" data-name="#e6e6e6" style="--color-l:90%;"></div>
+    <div class="col color-item" data-name="#cccccc" style="--color-l:80%;"></div>
+    <div class="col color-item" data-name="#b3b3b3" style="--color-l:70%;"></div>
+    <div class="col color-item" data-name="#999999" style="--color-l:60%;"></div>
+    <div class="col color-item" data-name="#808080" style="--color-l:50%;"></div>
+    <div class="col color-item" data-name="#666666" style="--color-l:40%;"></div>
+    <div class="col color-item" data-name="#4d4d4d" style="--color-l:30%;"></div>
+    <div class="col color-item" data-name="#333333" style="--color-l:20%;"></div>
+    <div class="col color-item" data-name="#1a1a1a" style="--color-l:10%;"></div>
+    <div class="col color-item" data-name="#000000" style="--color-l:0%;"></div>
+  </div>
+  <div class="row mt-2 color-grid" style="--color-h:0deg; --color-s:0%;">
+    <div class="col color-item dynamic-grey" data-grey="100"></div>
+    <div class="col color-item dynamic-grey" data-grey="90"></div>
+    <div class="col color-item dynamic-grey" data-grey="80"></div>
+    <div class="col color-item dynamic-grey" data-grey="70"></div>
+    <div class="col color-item dynamic-grey" data-grey="60"></div>
+    <div class="col color-item dynamic-grey" data-grey="50"></div>
+    <div class="col color-item dynamic-grey" data-grey="40"></div>
+    <div class="col color-item dynamic-grey" data-grey="30"></div>
+    <div class="col color-item dynamic-grey" data-grey="20"></div>
+    <div class="col color-item dynamic-grey" data-grey="10"></div>
+    <div class="col color-item dynamic-grey" data-grey="0"></div>
+  </div>
+</body>
+
+<script src="script.js"></script>
+</html>
+
