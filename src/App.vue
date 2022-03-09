@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-main>
+    <v-main class="align-center">
       <GreySettings @change="onChangeSettings"/>
       <GreySwatch/>
       <GreySwatch :settings="settings"/>

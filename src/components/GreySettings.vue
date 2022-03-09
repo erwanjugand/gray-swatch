@@ -1,6 +1,5 @@
 <template>
-    <v-navigation-drawer app permanent :width="320">
-
+  <v-navigation-drawer app permanent :width="320">
     <v-form>
       <v-container>
         <v-row fluid>
@@ -10,14 +9,14 @@
 
           <v-col cols="12">
               <v-subheader class="pl-0">
-                Utiliser la couleur complémentaire
+                Use complementary color
               </v-subheader>
               <v-switch v-model="form.complementary" @input="onChange"></v-switch>
           </v-col>
 
           <v-col cols="12">
             <v-subheader class="pl-0">
-              Accentuation de la teinte
+              Hue enhancement
             </v-subheader>
             <v-slider v-model="form.tint" @input="onChange" min="0" max="100" thumb-label>
             </v-slider>
@@ -25,7 +24,7 @@
 
           <v-col cols="12">
             <v-subheader class="pl-0">
-              Exposant
+              Exponent
             </v-subheader>
             <v-slider v-model="form.exponent" @input="onChange" min="0" max="10" thumb-label>
             </v-slider>
