@@ -1,7 +1,19 @@
 <template>
-  <v-col>
-    <v-responsive :style="style" :aspect-ratio="3/4" />
-      {{ color }}
+  <v-col class="text-truncate text-center">
+    <v-tooltip v-model="showTooltip" top>
+      <template #activator="{ on, attrs }">
+        <v-responsive
+          v-ripple
+          :style="style"
+          :aspect-ratio="3/4"
+          v-bind="attrs"
+          v-on="on"
+          @click="onClick"
+        />
+        {{ color }}
+      </template>
+      <span>Copy to clipboard</span>
+    </v-tooltip>
   </v-col>
 </template>
 
@@ -12,11 +24,25 @@ export default Vue.extend({
     color: String
   },
 
+  data () {
+    return {
+      showTooltip: false
+    }
+  },
+
   computed: {
-    style(): Partial<CSSStyleDeclaration> {
+    style (): Partial<CSSStyleDeclaration> {
       return {
         backgroundColor: this.color
       }
+    }
+  },
+
+  methods: {
+    onClick () {
+      this.showTooltip = true
+      setTimeout(() => { this.showTooltip = false }, 2000)
+      navigator.clipboard.writeText(this.color)
     }
   }
 })

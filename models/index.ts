@@ -3,4 +3,5 @@ export interface Settings {
   complementary: boolean
   tint: number
   exponent: number
+  size: number
 }
