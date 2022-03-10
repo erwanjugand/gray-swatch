@@ -1,15 +1,8 @@
 <template>
   <v-col class="text-truncate text-center">
     <v-tooltip v-model="showTooltip" top>
-      <template #activator="{ on, attrs }">
-        <v-responsive
-          v-ripple
-          :style="style"
-          :aspect-ratio="3/4"
-          v-bind="attrs"
-          v-on="on"
-          @click="onClick"
-        />
+      <template v-slot:activator="{}">
+        <v-responsive v-ripple :style="style" :aspect-ratio="3/4" @click="onClick"/>
         {{ color }}
       </template>
       <span>Copy to clipboard</span>
