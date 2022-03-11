@@ -28,7 +28,22 @@ export default Vue.extend({
     }
   },
 
+  mounted() {
+    if (this.isDarkTheme === null) {
+      const defaultDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
+      localStorage.setItem('darkTheme', (+defaultDarkTheme).toString())
+      this.$vuetify.theme.dark = defaultDarkTheme
+    } else {
+      this.$vuetify.theme.dark = this.isDarkTheme
+    }
+  },
+
   computed: {
+    isDarkTheme (): boolean | null {
+      let localValue = localStorage.getItem('darkTheme')
+      return localValue === null ? localValue : !!+localValue
+    },
+
     defaultSettings (): Settings {
       return {
         color: '#000000',

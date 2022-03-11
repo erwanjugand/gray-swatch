@@ -41,7 +41,7 @@
       <v-icon aria-hidden="false">
         mdi-weather-night
       </v-icon>
-      <v-switch v-model="lightMenu" @change="onChangeTheme" />
+      <v-switch v-model="lightTheme" @change="onChangeTheme" />
       <v-icon aria-hidden="false">
         mdi-white-balance-sunny
       </v-icon>
@@ -62,7 +62,13 @@ export default Vue.extend({
         exponent: 3,
         size: 11
       } as Settings,
-      lightMenu: true
+      lightTheme: !this.$vuetify.theme.dark
+    }
+  },
+
+  watch: {
+    '$vuetify.theme.dark' (value) {
+      this.lightTheme = !value
     }
   },
 
@@ -73,6 +79,7 @@ export default Vue.extend({
 
     onChangeTheme (value: boolean) {
       this.$vuetify.theme.dark = !value
+      localStorage.setItem('darkTheme', (+!value).toString())
     }
   }
 })
