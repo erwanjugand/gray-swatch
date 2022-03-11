@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row no-gutters>
+    <v-row no-gutters class="overflow-hidden elevation-2 rounded">
       <GreyPreview v-for="n in settings.size" :key="n" :color="newColor(settings.size - n)" />
     </v-row>
   </v-container>
