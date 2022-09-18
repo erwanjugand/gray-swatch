@@ -40,7 +40,7 @@ export default Vue.extend({
 
   computed: {
     isDarkTheme (): boolean | null {
-      let localValue = localStorage.getItem('darkTheme')
+      const localValue = localStorage.getItem('darkTheme')
       return localValue === null ? localValue : !!+localValue
     },
 
