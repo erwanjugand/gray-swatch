@@ -5,10 +5,10 @@
       location="top"
       text="Copy to clipboard"
     >
-      <template #activator="{ activatorProps }">
+      <template #activator="{ props }">
         <v-responsive
           v-ripple
-          v-bind="activatorProps"
+          v-bind="props"
           :style="style"
           :aspect-ratio="3/4"
           @click="onClick"
@@ -26,11 +26,11 @@ interface Props {
   color: string
 }
 
-const props = defineProps<Props>()
+const componentProps = defineProps<Props>()
 
 const showTooltip = ref<boolean>(false)
 const style = computed<StyleValue>(() => ({
-  backgroundColor: props.color
+  backgroundColor: componentProps.color
 }))
 
 const onClick = () => {
@@ -38,6 +38,6 @@ const onClick = () => {
   setTimeout(() => {
     showTooltip.value = false
   }, 2000)
-  navigator.clipboard.writeText(props.color)
+  navigator.clipboard.writeText(componentProps.color)
 }
 </script>

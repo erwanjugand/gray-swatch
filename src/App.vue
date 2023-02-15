@@ -1,7 +1,10 @@
 <template>
   <v-app>
     <v-main class="d-flex flex-column justify-center">
-      <GreySettings @change="onChangeSettings" />
+      <GreySettings
+        v-model="settings"
+        @update:modelValue="onChangeSettings"
+      />
       <GreySwatch :settings="defaultSettings" />
       <GreySwatch :settings="settings || defaultSettings" />
     </v-main>
@@ -18,14 +21,21 @@ import { useLocalTheme } from './composables/useLocalTheme'
 useLocalTheme().getLocalTheme()
 
 // Settings
-const settings = ref<Settings | null>(null)
+const settings = ref<Settings>({
+  color: '#44c0ff',
+  complementary: true,
+  tint: 10,
+  exponent: 3,
+  size: 11
+})
+
 const defaultSettings = computed<Settings>(() => {
   return {
     color: '#000000',
     complementary: false,
     tint: 0,
     exponent: 0,
-    size: settings.value?.size || 11
+    size: settings.value.size
   }
 })
 

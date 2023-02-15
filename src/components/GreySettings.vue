@@ -14,7 +14,6 @@
               :dot-size="25"
               :modes="['rgb', 'hex', 'hsl']"
               :swatches-max-height="200"
-              @update:model-value="onChangeSettings"
             />
           </v-col>
 
@@ -27,7 +26,6 @@
                 v-model="form.complementary"
                 density="compact"
                 color="primary"
-                @update:model-value="onChangeSettings"
               />
             </div>
           </v-col>
@@ -43,7 +41,6 @@
               :step="1"
               thumb-label
               color="primary"
-              @update:model-value="onChangeSettings"
             />
           </v-col>
 
@@ -58,7 +55,6 @@
               :step="1"
               thumb-label
               color="primary"
-              @update:model-value="onChangeSettings"
             />
           </v-col>
 
@@ -73,7 +69,6 @@
               :step="1"
               thumb-label
               color="primary"
-              @update:model-value="onChangeSettings"
             />
           </v-col>
         </v-row>
@@ -105,25 +100,28 @@
 <script setup lang="ts">
 import { useLocalTheme } from '@/composables/useLocalTheme'
 import { Settings } from '@/types/global'
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { useTheme } from 'vuetify/lib/framework.mjs'
 
 // Form
-interface Emit {
-  (e: 'change', settings: Settings): void
+interface Props {
+  modelValue: Settings
 }
+
+interface Emit {
+  (e: 'update:settings', settings: Settings): void
+}
+
+const props = defineProps<Props>()
 const emit = defineEmits<Emit>()
 
-const onChangeSettings = () => {
-  emit('change', form.value)
-}
-
-const form = ref<Settings>({
-  color: '#44c0ff',
-  complementary: true,
-  tint: 10,
-  exponent: 3,
-  size: 11
+const form = computed({
+  get () {
+    return props.modelValue
+  },
+  set (value) {
+    emit('update:settings', value)
+  }
 })
 
 // Set Theme
