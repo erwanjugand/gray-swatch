@@ -3,10 +3,9 @@
     <v-main class="d-flex flex-column justify-center">
       <GreySettings
         v-model="settings"
-        @update:modelValue="onChangeSettings"
       />
       <GreySwatch :settings="defaultSettings" />
-      <GreySwatch :settings="settings || defaultSettings" />
+      <GreySwatch :settings="settings" />
     </v-main>
   </v-app>
 </template>
@@ -38,8 +37,4 @@ const defaultSettings = computed<Settings>(() => {
     size: settings.value.size
   }
 })
-
-const onChangeSettings = (newSettings: Settings) => {
-  settings.value = newSettings
-}
 </script>

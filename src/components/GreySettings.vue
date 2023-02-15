@@ -109,7 +109,7 @@ interface Props {
 }
 
 interface Emit {
-  (e: 'update:settings', settings: Settings): void
+  (e: 'update:modelValue', settings: Settings): void
 }
 
 const props = defineProps<Props>()
@@ -120,7 +120,7 @@ const form = computed({
     return props.modelValue
   },
   set (value) {
-    emit('update:settings', value)
+    emit('update:modelValue', value)
   }
 })
 
