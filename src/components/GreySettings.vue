@@ -1,86 +1,135 @@
 <template>
-  <v-navigation-drawer app permanent :width="320">
+  <v-navigation-drawer
+    app
+    permanent
+    :width="320"
+  >
     <v-form>
       <v-container>
         <v-row fluid>
-          <v-col cols="12">
-            <v-color-picker v-model="form.color" dot-size="25" swatches-max-height="200" @input="onChangeSettings" />
+          <v-col :cols="12">
+            <v-color-picker
+              v-model="form.color"
+              :elevation="0"
+              :dot-size="25"
+              :modes="['rgb', 'hex', 'hsl']"
+              :swatches-max-height="200"
+            />
           </v-col>
 
-          <v-col cols="12">
-            <v-subheader class="pl-0">
+          <v-col :cols="12">
+            <p class="text-body-2 pa-2">
               Use complementary color
-            </v-subheader>
-            <v-switch v-model="form.complementary" @change="onChangeSettings" />
+            </p>
+            <div class="px-2">
+              <v-switch
+                v-model="form.complementary"
+                density="compact"
+                color="primary"
+              />
+            </div>
           </v-col>
 
-          <v-col cols="12">
-            <v-subheader class="pl-0">
+          <v-col :cols="12">
+            <p class="text-body-2 pa-2">
               Hue enhancement
-            </v-subheader>
-            <v-slider v-model="form.tint" min="0" max="100" thumb-label @input="onChangeSettings" />
+            </p>
+            <v-slider
+              v-model="form.tint"
+              :min="0"
+              :max="100"
+              :step="1"
+              thumb-label
+              color="primary"
+            />
           </v-col>
 
-          <v-col cols="12">
-            <v-subheader class="pl-0">
+          <v-col :cols="12">
+            <p class="text-body-2 pa-2">
               Exponent
-            </v-subheader>
-            <v-slider v-model="form.exponent" min="0" max="10" thumb-label @input="onChangeSettings" />
+            </p>
+            <v-slider
+              v-model="form.exponent"
+              :min="0"
+              :max="10"
+              :step="1"
+              thumb-label
+              color="primary"
+            />
           </v-col>
 
-          <v-col cols="12">
-            <v-subheader class="pl-0">
+          <v-col :cols="12">
+            <p class="text-body-2 pa-2">
               Number of grays
-            </v-subheader>
-            <v-slider v-model="form.size" min="3" max="20" thumb-label @input="onChangeSettings" />
+            </p>
+            <v-slider
+              v-model="form.size"
+              :min="3"
+              :max="20"
+              :step="1"
+              thumb-label
+              color="primary"
+            />
           </v-col>
         </v-row>
       </v-container>
     </v-form>
-    <v-form class="d-flex justify-center">
-      <v-icon aria-hidden="false">
-        mdi-weather-night
-      </v-icon>
-      <v-switch v-model="lightTheme" @change="onChangeTheme" />
-      <v-icon aria-hidden="false">
-        mdi-white-balance-sunny
-      </v-icon>
-    </v-form>
+    <template #append>
+      <v-form class="d-flex justify-center align-center">
+        <v-icon>
+          mdi-weather-night
+        </v-icon>
+        <div class="flex-shrink-1 mx-2">
+          <v-switch
+            v-model="currentTheme"
+            true-value="light"
+            false-value="dark"
+            hide-details
+            color="primary"
+            @update:model-value="onChangeTheme"
+          />
+        </div>
+        <v-icon>
+          mdi-white-balance-sunny
+        </v-icon>
+      </v-form>
+    </template>
   </v-navigation-drawer>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
-import type { Settings } from 'models'
-export default Vue.extend({
-  data () {
-    return {
-      form: {
-        color: '#44c0ff',
-        complementary: true,
-        tint: 10,
-        exponent: 3,
-        size: 11
-      } as Settings,
-      lightTheme: !this.$vuetify.theme.dark
-    }
+<script setup lang="ts">
+import { useLocalTheme } from '@/composables/useLocalTheme'
+import { Settings } from '@/types/global'
+import { computed, ref } from 'vue'
+import { useTheme } from 'vuetify/lib/framework.mjs'
+
+// Form
+interface Props {
+  modelValue: Settings
+}
+
+interface Emit {
+  (e: 'update:modelValue', settings: Settings): void
+}
+
+const props = defineProps<Props>()
+const emit = defineEmits<Emit>()
+
+const form = computed({
+  get () {
+    return props.modelValue
   },
-
-  watch: {
-    '$vuetify.theme.dark' (value) {
-      this.lightTheme = !value
-    }
-  },
-
-  methods: {
-    onChangeSettings () {
-      this.$emit('change', this.form)
-    },
-
-    onChangeTheme (value: boolean) {
-      this.$vuetify.theme.dark = !value
-      localStorage.setItem('darkTheme', (+!value).toString())
-    }
+  set (value) {
+    emit('update:modelValue', value)
   }
 })
+
+// Set Theme
+const theme = useTheme()
+const { setLocalTheme } = useLocalTheme()
+const currentTheme = ref(theme.global.name.value)
+
+const onChangeTheme = () => {
+  setLocalTheme(currentTheme.value)
+}
 </script>

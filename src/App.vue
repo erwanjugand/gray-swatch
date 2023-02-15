@@ -1,64 +1,40 @@
 <template>
   <v-app>
-    <v-main class="align-center">
-      <GreySettings @change="onChangeSettings" />
+    <v-main class="d-flex flex-column justify-center">
+      <GreySettings
+        v-model="settings"
+      />
       <GreySwatch :settings="defaultSettings" />
-      <GreySwatch :settings="settings || defaultSettings" />
+      <GreySwatch :settings="settings" />
     </v-main>
   </v-app>
 </template>
 
-<script lang="ts">
-import type { Settings } from 'models'
-import Vue from 'vue'
+<script setup lang="ts">
+import { computed, ref } from 'vue'
 import GreySettings from './components/GreySettings.vue'
 import GreySwatch from './components/GreySwatch.vue'
+import { Settings } from './types/global'
+import { useLocalTheme } from './composables/useLocalTheme'
 
-export default Vue.extend({
-  name: 'App',
+useLocalTheme().getLocalTheme()
 
-  components: {
-    GreySettings,
-    GreySwatch
-  },
+// Settings
+const settings = ref<Settings>({
+  color: '#44c0ff',
+  complementary: true,
+  tint: 10,
+  exponent: 3,
+  size: 11
+})
 
-  data () {
-    return {
-      settings: null as Settings | null
-    }
-  },
-
-  mounted() {
-    if (this.isDarkTheme === null) {
-      const defaultDarkTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
-      localStorage.setItem('darkTheme', (+defaultDarkTheme).toString())
-      this.$vuetify.theme.dark = defaultDarkTheme
-    } else {
-      this.$vuetify.theme.dark = this.isDarkTheme
-    }
-  },
-
-  computed: {
-    isDarkTheme (): boolean | null {
-      const localValue = localStorage.getItem('darkTheme')
-      return localValue === null ? localValue : !!+localValue
-    },
-
-    defaultSettings (): Settings {
-      return {
-        color: '#000000',
-        complementary: false,
-        tint: 0,
-        exponent: 0,
-        size: this.settings?.size || 11
-      }
-    }
-  },
-
-  methods: {
-    onChangeSettings (settings: Settings) {
-      this.settings = settings
-    }
+const defaultSettings = computed<Settings>(() => {
+  return {
+    color: '#000000',
+    complementary: false,
+    tint: 0,
+    exponent: 0,
+    size: settings.value.size
   }
 })
 </script>
