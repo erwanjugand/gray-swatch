@@ -9,11 +9,11 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue';
+import { computed, ref } from 'vue'
 import GreySettings from './components/GreySettings.vue'
 import GreySwatch from './components/GreySwatch.vue'
-import { Settings } from './types/global';
-import { useLocalTheme } from './composables/useLocalTheme';
+import { Settings } from './types/global'
+import { useLocalTheme } from './composables/useLocalTheme'
 
 useLocalTheme().getLocalTheme()
 

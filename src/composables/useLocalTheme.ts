@@ -22,7 +22,6 @@ export function useLocalTheme() {
     }
   }
 
-
   return {
     getLocalTheme,
     setLocalTheme
