@@ -13,7 +13,7 @@
     "color-convert": "2.0.1",
     "roboto-fontface": "0.10.0",
     "vue": "3.2.47",
-    "vuetify": "3.1.5",
+    "vuetify": "3.1.11",
     "webfontloader": "1.6.28"
   },
   "devDependencies": {
