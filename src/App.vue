@@ -1,9 +1,7 @@
 <template>
   <v-app>
     <v-main class="d-flex flex-column justify-center">
-      <GreySettings
-        v-model="settings"
-      />
+      <GreySettings v-model="settings" />
       <GreySwatch :settings="defaultSettings" />
       <GreySwatch :settings="settings" />
     </v-main>
@@ -25,7 +23,7 @@ const settings = ref<Settings>({
   complementary: true,
   tint: 10,
   exponent: 3,
-  size: 11
+  size: 11,
 })
 
 const defaultSettings = computed<Settings>(() => {
@@ -34,7 +32,7 @@ const defaultSettings = computed<Settings>(() => {
     complementary: false,
     tint: 0,
     exponent: 0,
-    size: settings.value.size
+    size: settings.value.size,
   }
 })
 </script>

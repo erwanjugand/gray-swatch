@@ -1,5 +1,5 @@
-import { computed } from "vue"
-import { useTheme } from "vuetify/lib/framework.mjs"
+import { computed } from 'vue'
+import { useTheme } from 'vuetify/lib/framework.mjs'
 
 export function useLocalTheme() {
   const theme = useTheme()
@@ -24,6 +24,6 @@ export function useLocalTheme() {
 
   return {
     getLocalTheme,
-    setLocalTheme
+    setLocalTheme,
   }
 }

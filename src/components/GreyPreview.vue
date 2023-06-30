@@ -1,18 +1,8 @@
 <template>
   <v-col class="text-truncate text-center">
-    <v-tooltip
-      v-model="showTooltip"
-      location="top"
-      text="Copy to clipboard"
-    >
+    <v-tooltip v-model="showTooltip" location="top" text="Copy to clipboard">
       <template #activator="{ props }">
-        <v-responsive
-          v-ripple
-          v-bind="props"
-          :style="style"
-          :aspect-ratio="3/4"
-          @click="onClick"
-        />
+        <v-responsive v-ripple v-bind="props" :style="style" :aspect-ratio="3 / 4" @click="onClick" />
         {{ color }}
       </template>
     </v-tooltip>
@@ -30,7 +20,7 @@ const componentProps = defineProps<Props>()
 
 const showTooltip = ref<boolean>(false)
 const style = computed<StyleValue>(() => ({
-  backgroundColor: componentProps.color
+  backgroundColor: componentProps.color,
 }))
 
 const onClick = () => {

@@ -1,9 +1,5 @@
 <template>
-  <v-navigation-drawer
-    app
-    permanent
-    :width="320"
-  >
+  <v-navigation-drawer app permanent :width="320">
     <v-form>
       <v-container>
         <v-row fluid>
@@ -18,67 +14,32 @@
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">
-              Use complementary color
-            </p>
+            <p class="text-body-2 pa-2">Use complementary color</p>
             <div class="px-2">
-              <v-switch
-                v-model="form.complementary"
-                density="compact"
-                color="primary"
-              />
+              <v-switch v-model="form.complementary" density="compact" color="primary" />
             </div>
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">
-              Hue enhancement
-            </p>
-            <v-slider
-              v-model="form.tint"
-              :min="0"
-              :max="100"
-              :step="1"
-              thumb-label
-              color="primary"
-            />
+            <p class="text-body-2 pa-2">Hue enhancement</p>
+            <v-slider v-model="form.tint" :min="0" :max="100" :step="1" thumb-label color="primary" />
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">
-              Exponent
-            </p>
-            <v-slider
-              v-model="form.exponent"
-              :min="0"
-              :max="10"
-              :step="1"
-              thumb-label
-              color="primary"
-            />
+            <p class="text-body-2 pa-2">Exponent</p>
+            <v-slider v-model="form.exponent" :min="0" :max="10" :step="1" thumb-label color="primary" />
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">
-              Number of grays
-            </p>
-            <v-slider
-              v-model="form.size"
-              :min="3"
-              :max="20"
-              :step="1"
-              thumb-label
-              color="primary"
-            />
+            <p class="text-body-2 pa-2">Number of grays</p>
+            <v-slider v-model="form.size" :min="3" :max="20" :step="1" thumb-label color="primary" />
           </v-col>
         </v-row>
       </v-container>
     </v-form>
     <template #append>
       <v-form class="d-flex justify-center align-center">
-        <v-icon>
-          mdi-weather-night
-        </v-icon>
+        <v-icon>mdi-weather-night</v-icon>
         <div class="flex-shrink-1 mx-2">
           <v-switch
             v-model="currentTheme"
@@ -89,9 +50,7 @@
             @update:model-value="onChangeTheme"
           />
         </div>
-        <v-icon>
-          mdi-white-balance-sunny
-        </v-icon>
+        <v-icon> mdi-white-balance-sunny </v-icon>
       </v-form>
     </template>
   </v-navigation-drawer>
@@ -116,12 +75,12 @@ const props = defineProps<Props>()
 const emit = defineEmits<Emit>()
 
 const form = computed({
-  get () {
+  get() {
     return props.modelValue
   },
-  set (value) {
+  set(value) {
     emit('update:modelValue', value)
-  }
+  },
 })
 
 // Set Theme

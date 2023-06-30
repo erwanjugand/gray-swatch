@@ -6,7 +6,13 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
-    "eslint": "eslint --ext .js,.vue --ignore-path .gitignore --fix src"
+    "check:prettier": "prettier --check .",
+    "check:eslint": "eslint --ext .ts,.js,.vue .",
+    "check:ts": "vue-tsc --noEmit",
+    "check:all": "pnpm check:prettier && pnpm check:eslint && pnpm check:ts",
+    "fix:prettier": "prettier --loglevel warn --write .",
+    "fix:eslint": "pnpm check:eslint --fix",
+    "fix:all": "pnpm fix:prettier && pnpm fix:eslint"
   },
   "dependencies": {
     "@mdi/font": "7.2.96",
@@ -23,7 +29,9 @@
     "@vitejs/plugin-vue": "4.2.3",
     "@vue/eslint-config-typescript": "11.0.3",
     "eslint": "8.41.0",
+    "eslint-config-prettier": "8.8.0",
     "eslint-plugin-vue": "9.14.1",
+    "prettier": "2.8.8",
     "typescript": "5.0.4",
     "vite": "4.3.9",
     "vite-plugin-vuetify": "1.0.2",
