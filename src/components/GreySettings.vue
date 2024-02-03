@@ -8,6 +8,7 @@
               v-model="form.color"
               :elevation="0"
               :dot-size="25"
+              :width="288"
               :modes="['rgb', 'hex', 'hsl']"
               :swatches-max-height="200"
             />
