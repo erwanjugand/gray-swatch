@@ -10,6 +10,14 @@ export default tsConfig.config(
   ...tsConfig.configs.strict,
   prettierConfig,
   {
+    rules: {
+      'vue/component-tags-order': [
+        'error',
+        {
+          order: ['script', 'template', 'style'],
+        },
+      ],
+    },
     ignores: ['dist'],
     languageOptions: {
       parser: vueParser,

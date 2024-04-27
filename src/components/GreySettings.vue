@@ -1,3 +1,21 @@
+<script setup lang="ts">
+import { useLocalTheme } from '@/composables/useLocalTheme'
+import type { Settings } from '@/types/global'
+import { ref } from 'vue'
+import { useTheme } from 'vuetify'
+
+const form = defineModel<Settings>({ required: true })
+
+// Set Theme
+const theme = useTheme()
+const { setLocalTheme } = useLocalTheme()
+const currentTheme = ref(theme.global.name.value)
+
+const onChangeTheme = () => {
+  setLocalTheme(currentTheme.value)
+}
+</script>
+
 <template>
   <v-navigation-drawer app permanent :width="320">
     <v-form>
@@ -56,21 +74,3 @@
     </template>
   </v-navigation-drawer>
 </template>
-
-<script setup lang="ts">
-import { useLocalTheme } from '@/composables/useLocalTheme'
-import type { Settings } from '@/types/global'
-import { ref } from 'vue'
-import { useTheme } from 'vuetify'
-
-const form = defineModel<Settings>({ required: true })
-
-// Set Theme
-const theme = useTheme()
-const { setLocalTheme } = useLocalTheme()
-const currentTheme = ref(theme.global.name.value)
-
-const onChangeTheme = () => {
-  setLocalTheme(currentTheme.value)
-}
-</script>

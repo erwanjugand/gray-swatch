@@ -1,13 +1,3 @@
-<template>
-  <v-app>
-    <v-main class="d-flex flex-column justify-center">
-      <GreySettings v-model="settings" />
-      <GreySwatch :settings="defaultSettings" />
-      <GreySwatch :settings="settings" />
-    </v-main>
-  </v-app>
-</template>
-
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import GreySettings from '@/components/GreySettings.vue'
@@ -36,3 +26,13 @@ const defaultSettings = computed<Settings>(() => {
   }
 })
 </script>
+
+<template>
+  <v-app>
+    <v-main class="d-flex flex-column justify-center">
+      <GreySettings v-model="settings" />
+      <GreySwatch :settings="defaultSettings" />
+      <GreySwatch :settings="settings" />
+    </v-main>
+  </v-app>
+</template>
