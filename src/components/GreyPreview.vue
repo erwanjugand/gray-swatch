@@ -10,17 +10,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, StyleValue } from 'vue'
+import { computed, ref, type CSSProperties } from 'vue'
 
-interface Props {
+const props = defineProps<{
   color: string
-}
-
-const componentProps = defineProps<Props>()
+}>()
 
 const showTooltip = ref<boolean>(false)
-const style = computed<StyleValue>(() => ({
-  backgroundColor: componentProps.color,
+const style = computed<CSSProperties>(() => ({
+  backgroundColor: props.color,
 }))
 
 const onClick = () => {
@@ -28,6 +26,6 @@ const onClick = () => {
   setTimeout(() => {
     showTooltip.value = false
   }, 2000)
-  navigator.clipboard.writeText(componentProps.color)
+  navigator.clipboard.writeText(props.color)
 }
 </script>
