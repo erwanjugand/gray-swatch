@@ -8,12 +8,10 @@
 
 <script setup lang="ts">
 import GreyPreview from '@/components/GreyPreview.vue'
-import { Settings } from '@/types/global'
-import { useColor } from '../composables/useColor'
+import type { Settings } from '@/types/global'
+import { useColor } from '@/composables/useColor'
 
-interface Props {
+defineProps<{
   settings: Settings
-}
-
-defineProps<Props>()
+}>()
 </script>

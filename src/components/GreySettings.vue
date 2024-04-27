@@ -59,30 +59,11 @@
 
 <script setup lang="ts">
 import { useLocalTheme } from '@/composables/useLocalTheme'
-import { Settings } from '@/types/global'
-import { computed, ref } from 'vue'
-import { useTheme } from 'vuetify/lib/framework.mjs'
+import type { Settings } from '@/types/global'
+import { ref } from 'vue'
+import { useTheme } from 'vuetify'
 
-// Form
-interface Props {
-  modelValue: Settings
-}
-
-interface Emit {
-  (e: 'update:modelValue', settings: Settings): void
-}
-
-const props = defineProps<Props>()
-const emit = defineEmits<Emit>()
-
-const form = computed({
-  get() {
-    return props.modelValue
-  },
-  set(value) {
-    emit('update:modelValue', value)
-  },
-})
+const form = defineModel<Settings>({ required: true })
 
 // Set Theme
 const theme = useTheme()
