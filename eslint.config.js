@@ -18,7 +18,6 @@ export default tsConfig.config(
         },
       ],
     },
-    ignores: ['dist'],
     languageOptions: {
       parser: vueParser,
       parserOptions: {
@@ -26,5 +25,8 @@ export default tsConfig.config(
         sourceType: 'module',
       },
     },
+  },
+  {
+    ignores: ['dist'],
   },
 )
