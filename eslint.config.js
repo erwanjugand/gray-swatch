@@ -3,6 +3,7 @@ import tsConfig from 'typescript-eslint'
 import prettierConfig from 'eslint-config-prettier'
 import vueConfig from 'eslint-plugin-vue'
 import vueParser from 'vue-eslint-parser'
+import globals from 'globals'
 
 export default tsConfig.config(
   eslint.configs.recommended,
@@ -11,7 +12,7 @@ export default tsConfig.config(
   prettierConfig,
   {
     rules: {
-      'vue/component-tags-order': [
+      'vue/block-order': [
         'error',
         {
           order: ['script', 'template', 'style'],
@@ -19,10 +20,10 @@ export default tsConfig.config(
       ],
     },
     languageOptions: {
+      globals: globals.browser,
       parser: vueParser,
       parserOptions: {
         parser: tsConfig.parser,
-        sourceType: 'module',
       },
     },
   },
