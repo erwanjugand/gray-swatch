@@ -27,7 +27,7 @@
     "@types/color-convert": "2.0.4",
     "@types/node": "22",
     "@types/webfontloader": "1.6.38",
-    "@vitejs/plugin-vue": "5.2.4",
+    "@vitejs/plugin-vue": "6.0.0",
     "eslint": "9.31.0",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-vue": "10.3.0",
