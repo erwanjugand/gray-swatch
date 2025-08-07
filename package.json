@@ -8,12 +8,12 @@
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview",
     "check:prettier": "prettier --check .",
-    "check:eslint": "eslint .",
+    "check:lint": "eslint .",
     "check:ts": "vue-tsc --noEmit",
-    "check:all": "pnpm check:prettier && pnpm check:eslint && pnpm check:ts",
-    "fix:prettier": "prettier --loglevel warn --write .",
-    "fix:eslint": "pnpm check:eslint --fix",
-    "fix:all": "pnpm fix:prettier && pnpm fix:eslint"
+    "check:all": "pnpm check:prettier && pnpm check:lint && pnpm check:ts",
+    "fix:prettier": "prettier --log-level warn --write .",
+    "fix:lint": "pnpm check:lint --fix",
+    "fix:all": "pnpm fix:prettier && pnpm fix:lint"
   },
   "dependencies": {
     "@mdi/font": "7.4.47",
