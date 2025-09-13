@@ -12,8 +12,8 @@ importers:
         specifier: 7.4.47
         version: 7.4.47
       color-convert:
-        specifier: 3.1.0
-        version: 3.1.0
+        specifier: 3.1.2
+        version: 3.1.2
       roboto-fontface:
         specifier: 0.10.0
         version: 0.10.0
@@ -618,8 +618,8 @@ packages:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
 
-  color-convert@3.1.0:
-    resolution: {integrity: sha512-TVoqAq8ZDIpK5lsQY874DDnu65CSsc9vzq0wLpNQ6UMBq81GSZocVazPiBbYGzngzBOIRahpkTzCLVe2at4MfA==}
+  color-convert@3.1.2:
+    resolution: {integrity: sha512-UNqkvCDXstVck3kdowtOTWROIJQwafjOfXSmddoDrXo4cewMKmusCeF22Q24zvjR8nwWib/3S/dfyzPItPEiJg==}
     engines: {node: '>=14.6'}
 
   color-name@1.1.4:
@@ -1646,7 +1646,7 @@ snapshots:
     dependencies:
       color-name: 1.1.4
 
-  color-convert@3.1.0:
+  color-convert@3.1.2:
     dependencies:
       color-name: 2.0.0
 
