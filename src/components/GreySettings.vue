@@ -33,24 +33,24 @@ const onChangeTheme = () => {
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">Use complementary color</p>
+            <p class="text-body-medium ma-2">Use complementary color</p>
             <div class="px-2">
               <v-switch v-model="form.complementary" density="compact" color="primary" />
             </div>
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">Hue enhancement</p>
+            <p class="text-body-medium ma-2">Hue enhancement</p>
             <v-slider v-model="form.tint" :min="0" :max="100" :step="1" thumb-label color="primary" />
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">Exponent</p>
+            <p class="text-body-medium ma-2">Exponent</p>
             <v-slider v-model="form.exponent" :min="0" :max="10" :step="1" thumb-label color="primary" />
           </v-col>
 
           <v-col :cols="12">
-            <p class="text-body-2 pa-2">Number of grays</p>
+            <p class="text-body-medium ma-2">Number of grays</p>
             <v-slider v-model="form.size" :min="3" :max="20" :step="1" thumb-label color="primary" />
           </v-col>
         </v-row>
