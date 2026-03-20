@@ -1,19 +1,9 @@
 <script setup lang="ts">
 import { useLocalTheme } from '@/composables/useLocalTheme'
 import type { Settings } from '@/types/global'
-import { ref } from 'vue'
-import { useTheme } from 'vuetify'
 
 const form = defineModel<Settings>({ required: true })
-
-// Set Theme
-const theme = useTheme()
-const { setLocalTheme } = useLocalTheme()
-const currentTheme = ref(theme.global.name.value)
-
-const onChangeTheme = () => {
-  setLocalTheme(currentTheme.value)
-}
+const { localTheme } = useLocalTheme()
 </script>
 
 <template>
@@ -58,18 +48,17 @@ const onChangeTheme = () => {
     </v-form>
     <template #append>
       <v-form class="d-flex justify-center align-center">
-        <v-icon>mdi-weather-night</v-icon>
-        <div class="flex-shrink-1 mx-2">
-          <v-switch
-            v-model="currentTheme"
-            true-value="light"
-            false-value="dark"
-            hide-details
-            color="primary"
-            @update:model-value="onChangeTheme"
-          />
-        </div>
-        <v-icon> mdi-white-balance-sunny </v-icon>
+        <v-switch
+          v-model="localTheme"
+          inset
+          prepend-icon="mdi-weather-night"
+          append-icon="mdi-white-balance-sunny"
+          :indeterminate="localTheme === 'system'"
+          true-value="light"
+          false-value="dark"
+          hide-details
+          color="primary"
+        />
       </v-form>
     </template>
   </v-navigation-drawer>
