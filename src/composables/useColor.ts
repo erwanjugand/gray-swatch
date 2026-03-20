@@ -1,5 +1,5 @@
 import convert from 'color-convert'
-import type { Settings } from '@/types/global'
+import type { Settings } from './useSettings'
 
 export function useColor(settings: Settings, index: number) {
   const colorHSL = convert.hex.hsl(settings.color)

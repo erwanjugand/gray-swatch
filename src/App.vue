@@ -1,33 +1,30 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref, watch } from 'vue'
+import { useDisplay } from 'vuetify'
 import GreySettings from '@/components/GreySettings.vue'
 import GreySwatch from '@/components/GreySwatch.vue'
-import type { Settings } from '@/types/global'
+import { useSettings } from '@/composables/useSettings'
 
-// Settings
-const settings = ref<Settings>({
-  color: '#44c0ff',
-  complementary: true,
-  tint: 10,
-  exponent: 3,
-  size: 11,
-})
+const { settings, defaultSettings } = useSettings()
 
-const defaultSettings = computed<Settings>(() => {
-  return {
-    color: '#000000',
-    complementary: false,
-    tint: 0,
-    exponent: 0,
-    size: settings.value.size,
-  }
+// Drawer
+const { mobile } = useDisplay()
+const drawer = ref(!mobile.value)
+
+watch(mobile, () => {
+  drawer.value = true
 })
 </script>
 
 <template>
   <v-app>
+    <GreySettings v-model="drawer" v-model:settings="settings" />
+    <v-app-bar v-if="mobile" collapse>
+      <template #prepend>
+        <v-app-bar-nav-icon @click="drawer = !drawer" />
+      </template>
+    </v-app-bar>
     <v-main class="d-flex flex-column justify-center">
-      <GreySettings v-model="settings" />
       <GreySwatch :settings="defaultSettings" />
       <GreySwatch :settings="settings" />
     </v-main>
