@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue'
 import { useDisplay } from 'vuetify'
+
 import GreySettings from '@/components/GreySettings.vue'
 import GreySwatch from '@/components/GreySwatch.vue'
 import { useSettings } from '@/composables/useSettings'
