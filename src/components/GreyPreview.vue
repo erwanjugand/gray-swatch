@@ -5,7 +5,7 @@ const props = defineProps<{
   color: string
 }>()
 
-const showTooltip = ref<boolean>(false)
+const showTooltip = ref(false)
 const style = computed<CSSProperties>(() => ({
   backgroundColor: props.color,
 }))
