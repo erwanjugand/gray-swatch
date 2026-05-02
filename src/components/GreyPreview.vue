@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, type CSSProperties } from 'vue'
+import { computed, type CSSProperties, ref } from 'vue'
 
 const props = defineProps<{
   color: string

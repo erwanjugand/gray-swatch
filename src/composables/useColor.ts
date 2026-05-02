@@ -1,4 +1,5 @@
 import convert from 'color-convert'
+
 import type { Settings } from './useSettings'
 
 export function useColor(settings: Settings, index: number) {
